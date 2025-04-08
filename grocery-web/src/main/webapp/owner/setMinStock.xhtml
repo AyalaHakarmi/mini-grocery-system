@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+<h:head>
+        <h:outputStylesheet library="css" name="style.css"/>
+
+    <title>Set Minimum Stock Quantity</title>
+</h:head>
+
+<h:body>
+    <div class="container">
+        <div class="dashboard-layout">
+    <h2>Set Minimum Stock Quantity for a Product</h2>
+
+    <h:form>
+        <h:panelGrid columns="2" cellpadding="5">
+            <h:outputLabel for="productName" value="Product Name:" />
+            <h:inputText id="productName" value="#{setMinStockBean.productName}" />
+
+            <h:outputLabel for="minQuantity" value="Minimum Stock Quantity:" />
+            <h:inputText id="minQuantity" value="#{setMinStockBean.minStockQuantity}" />
+        </h:panelGrid>
+
+        <br />
+
+        <h:commandButton value="Submit"
+                         action="#{setMinStockBean.submitMinStock}" />
+
+        <br /><br />
+
+        <h:commandButton value="Back to owner menu"
+                         action="ownerDashboard.xhtml?faces-redirect=true" />
+        
+                
+    
+    <h:commandButton value="Re-enter System" action="/index.xhtml?faces-redirect=true"/>
+    
+    <h:messages globalOnly="true" layout="table" style="color:green;" />
+
+
+    </h:form>
+    </div>
+        </div>
+</h:body>
+</html>

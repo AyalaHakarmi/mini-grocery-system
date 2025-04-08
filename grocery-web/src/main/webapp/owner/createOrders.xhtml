@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+    <title>Place Order</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f9fc;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .product-title {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .supplier-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #fff;
+            margin: 6px 0;
+            font-size: 14px;
+        }
+
+        .supplier-details {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 16px;
+            white-space: nowrap;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 6px;
+            background-color: #4285f4;
+            color: white;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #3367d6;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .form-section {
+            margin-top: 20px;
+            background-color: #eef2f7;
+            padding: 10px 15px;
+            border-radius: 8px;
+        }
+
+        .form-section input[type="text"] {
+            margin-left: 5px;
+            padding: 4px;
+        }
+
+        .action-buttons {
+            margin-top: 20px;
+            display: flex;
+            gap: 15px;
+        }
+    </style>
+</h:head>
+
+<h:body>
+    <h:form>
+        <h2>Product List</h2>
+
+        <ui:repeat value="#{createorderBean.products}" var="product">
+            <div class="product-title">
+                #{product.productName} (In Stock: #{product.currentQuantity}, Min: #{product.minStockQuantity})
+            </div>
+
+            <ui:repeat value="#{product.suppliers}" var="supplier">
+                <div class="supplier-row">
+                    <div class="supplier-details">
+                        <span><b>#{supplier.supplierName}</b></span>
+                        <span>Price: #{supplier.price}</span>
+                        <span>Min Order: #{supplier.minOrderQuantity}</span>
+                        <span>Contact: #{supplier.contactName}, #{supplier.phoneNumber}</span>
+                    </div>
+                    <h:commandLink value="Order Now"
+                                   action="#{createorderBean.selectSupplier(product.productName, supplier)}"
+                                   styleClass="btn" />
+                </div>
+            </ui:repeat>
+        </ui:repeat>
+
+        <h:panelGroup rendered="#{createorderBean.selectedSupplier ne null}" styleClass="form-section">
+            <h3>Order #{createorderBean.selectedProductName} from #{createorderBean.selectedSupplier.supplierName}</h3>
+
+            <h:outputLabel for="quantity" value="Quantity:" />
+            <h:inputText id="quantity" value="#{createorderBean.quantity}" />
+
+            <br/><br/>
+            <h:commandButton value="Submit Order" action="#{createorderBean.submitOrder}"  styleClass="btn"/>
+        </h:panelGroup>
+        <h:messages globalOnly="true" layout="table" style="color: green;" />
+        <div class="action-buttons">
+    <h:commandButton value="Done Ordering - Back to owner menu"
+                     action="ownerDashboard.xhtml?faces-redirect=true"
+                     styleClass="btn" />
+                     
+    <h:commandButton value="Re-enter System"
+                     action="/index.xhtml?faces-redirect=true"
+                     styleClass="btn" />
+</div>
+
+        
+    </h:form>
+</h:body>
+</html>

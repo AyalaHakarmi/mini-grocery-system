@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+
+<h:head>
+        <h:outputStylesheet library="css" name="style.css"/>
+    <title>Supplier Registration</title>
+</h:head>
+
+<h:body>
+    <div class="container">
+        <div class="dashboard-layout">
+    <h:form>
+        <h:panelGrid columns="2">
+            <h:outputLabel value="Supplier Name:" for="supplierName" />
+            <h:inputText id="supplierName" value="#{registerBean.supplierName}" required="true" />
+
+            <h:outputLabel value="Phone Number:" for="phoneNumber" />
+            <h:inputText id="phoneNumber" value="#{registerBean.phoneNumber}" required="true" />
+
+            <h:outputLabel value="Contact Name:" for="contactName" />
+            <h:inputText id="contactName" value="#{registerBean.contactName}" required="true" />
+        </h:panelGrid>
+
+        <h:commandButton value="Register" action="#{registerBean.register}" />
+    </h:form>
+    <h:form>
+    <h:commandButton value="Re-enter System" action="/index.xhtml?faces-redirect=true"/>
+</h:form>
+    
+    </div>
+        </div>
+</h:body>
+</html>
