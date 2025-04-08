@@ -80,13 +80,12 @@ This is a full-stack web application designed to help a local grocery store mana
 
 Update `application.properties`:
 
-```properties
+properties
 spring.datasource.url=jdbc:postgresql://localhost:5432/grocerydb
 
 spring.datasource.username=your_db_username
 
 spring.datasource.password=your_db_password
-```
 
 Ensure the database `grocerydb` exists before running.
 
