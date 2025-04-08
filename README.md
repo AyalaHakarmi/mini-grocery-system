@@ -82,7 +82,9 @@ Update `application.properties`:
 
 ```properties
 spring.datasource.url=jdbc:postgresql://localhost:5432/grocerydb
+
 spring.datasource.username=your_db_username
+
 spring.datasource.password=your_db_password
 ```
 
