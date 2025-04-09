@@ -5,7 +5,7 @@ _Java-based Spring Boot Web Application with JSF UI (JoinFaces)_
 
 This is a full-stack web application designed to help a local grocery store manage inventory and order products from suppliers. It includes both server-side and client-side interfaces. The project implements all required features, **including the bonus task**.
 
-> ⚠️ **Note:** This project was built in a very short timeframe — so if there you fing some missing edge case… _go easy on me_ 😅
+> ⚠️ **Note:** This project was built in a very short timeframe — so if you find some missing edge case… _go easy on me_ 😅
 
 ---
 
